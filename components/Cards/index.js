@@ -12,12 +12,12 @@ export default function Cards(props) {
 
       <div className="nextDaysWeather__temp_container">
         <p className="nextDaysWeather__temp_a">
-          {props.maxtemp_c}
+          {props.temp_max}
           {props.unit}
         </p>
 
         <p className="nextDaysWeather__temp_b">
-          {props.mintemp_c}
+          {props.temp_min}
           {props.unit}
         </p>
       </div>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import "./LadoD.css";
 import BotonesGrados from "../BotonesGrados";
 import PronosticoT from "../PronosticoT";
@@ -7,12 +7,46 @@ import Cards from "../Cards";
 import Footer from "../Footer";
 import Otros from "../Otros";
 
-export default function LadoD(props) {
+const getData = async () => {
+  const response = await fetch(
+    "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&units=metric&lon=10.99&appid=4ad565930b09016071d3b0ba0747ae13"
+  );
+
+  const jsonResponse = await response.json();
+
+  const today = new Date();
+  let date;
+  const weather = [];
+
+  for (let i = 0; i < jsonResponse.list.length; i += 1) {
+    date = new Date(jsonResponse.list[i].dt_txt);
+
+    if (date.getDate() !== today.getDate()) {
+      weather.push(jsonResponse.list[i]);
+
+      i = i + 8;
+    }
+  }
+
+  return weather;
+};
+
+const promPronostico = getData();
+
+export default function LadoD({}) {
+  const pronostico = use(promPronostico);
+  console.log(pronostico);
   return (
     <div className="rightSide">
       <BotonesGrados />
       <PronosticoT>
-        <Cards />
+        {pronostico.map((pron, i) => (
+          <Cards
+            key={i}
+            temp_min={pron.main.temp_min}
+            temp_max={pron.main.temp_max}
+          />
+        ))}
       </PronosticoT>
       <Otros />
       <Footer />
