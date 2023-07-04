@@ -43,12 +43,14 @@ export default function LadoD({}) {
         {pronostico.map((pron, i) => (
           <Cards
             key={i}
-            temp_min={pron.main.temp_min}
-            temp_max={pron.main.temp_max}
+            temp_min={Math.round(pron.main.temp_min) + "C"}
+            temp_max={Math.round(pron.main.temp_max) + "C"}
           />
         ))}
       </PronosticoT>
-      <Otros />
+      <Otros 
+      pronostico={pronostico}
+      />
       <Footer />
     </div>
   );

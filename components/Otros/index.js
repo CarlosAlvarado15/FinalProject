@@ -1,7 +1,9 @@
 import React from "react";
 import "./Otros.css";
 
-export default function Otros(props) {
+export default function Otros({ pronostico }) {
+  const today = pronostico[0];
+  console.log(today);
   return (
     <div className="currentWeather_hightlights">
       <h2 className="currentWeather_hightlights_title">Today`s Hightlights</h2>
@@ -10,7 +12,7 @@ export default function Otros(props) {
         <h2 className="currentWeather__windStatus_title">Wind status</h2>
 
         <div className="currentWeather__windStatus_value">
-          <h3>{props.wind_mph}</h3>
+          <h3>{today.wind.speed}</h3>
 
           <h4>mph</h4>
         </div>
@@ -18,7 +20,7 @@ export default function Otros(props) {
         <div className="currentWeather__windStatus_direction">
           <span className="material-symbols-outlined">navigation</span>
 
-          {props.wind_dir}
+          {today.wind.deg}
         </div>
       </div>
 
@@ -26,7 +28,7 @@ export default function Otros(props) {
         <h2 className="currentWeather__humidity_title">Humidity</h2>
 
         <div className="currentWeather__humidity_value">
-          <h3>{props.humidity}</h3>
+          <h3>{today.main.humidity}</h3>
           <h4>%</h4>
         </div>
 
@@ -37,7 +39,7 @@ export default function Otros(props) {
         </div>
 
         <div className="humidity__bar">
-          <div style={{ width: `${props.humidity}%` }}></div>
+          <div style={{ width: `${today.humidity}%` }}></div>
         </div>
 
         <div className="humidity__porcentage">%</div>
@@ -47,7 +49,7 @@ export default function Otros(props) {
         <h2 className="currentWeather__visibility_title">Visibility</h2>
 
         <div className="currentWeather__visibility_value">
-          <h3>{props.vis_miles}</h3>
+          <h3>{today.visibility / 1000}</h3>
           <h4>miles</h4>
         </div>
       </div>
@@ -56,7 +58,7 @@ export default function Otros(props) {
         <h2 className="currentWeather__airPressure_title">Air Pressure</h2>
 
         <div className="currentWeather__airPressure_value">
-          <h3>{props.pressure_mb}</h3>
+          <h3>{today.main.pressure}</h3>
           <h4>mb</h4>
         </div>
       </div>

@@ -2,6 +2,37 @@ import React from "react";
 import "./Cards.css";
 import Image from "next/image";
 export default function Cards(props) {
+  let climaImg = "";
+  switch (datos.list[0].weather[0].main) {
+    case `Clear`:
+      climaImg = `./Clear.png`;
+      console.log(`Limpio`);
+      break;
+    case `Clouds`:
+      climaImg = `./HeavyCloud.png`;
+      console.log(`Nubes`);
+      break;
+    case `Thunderstorm`:
+      climaImg = `./Thunderstorm.png`;
+      console.log(`Tormenta`);
+      break;
+    case `Drizzle`:
+      climaImg = `./LightRain.png`;
+      console.log(`Llovizna`);
+      break;
+    case `Rain`:
+      climaImg = `./HeavyRain.png`;
+      console.log(`Lluvia`);
+      break;
+    case `Snow`:
+      climaImg = `./Snow.png`;
+      console.log(`Nieve`);
+      break;
+    case `Atmosphere`:
+      climaImg = `./Shower.png`;
+      console.log(`Atmosfera`);
+      break;
+  }
   return (
     <li className="nextDaysWeather__items">
       <h3 className="nextDaysWeather__date">{props.date}</h3>

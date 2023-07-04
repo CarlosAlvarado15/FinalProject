@@ -2,6 +2,7 @@ import React from "react";
 import "./BotonesGrados.css";
 
 export default function BotonesGrados(props) {
+  
   const onClickButton_F = () => {
     props.setChangeTemp("°F");
   };
