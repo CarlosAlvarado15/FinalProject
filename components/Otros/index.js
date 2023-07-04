@@ -1,6 +1,6 @@
 import React from "react";
 import "./Otros.css";
-
+import Image from "next/image";
 export default function Otros({ pronostico }) {
   const today = pronostico[0];
   console.log(today);
@@ -18,7 +18,14 @@ export default function Otros({ pronostico }) {
         </div>
 
         <div className="currentWeather__windStatus_direction">
-          <span className="material-symbols-outlined">navigation</span>
+          <span className="material-symbols-outlined">
+            <Image
+              src="public/wind-direction.svg"
+              alt="w"
+              width={"50"}
+              height={50}
+            />
+          </span>
 
           {today.wind.deg}
         </div>
