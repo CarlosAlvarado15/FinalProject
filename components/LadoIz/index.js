@@ -12,7 +12,7 @@ export default function LadoIz(props) {
       <div className="currentWeather__info_container">
         <div className="weather__icon_container">
           <span className="currentWeather_icon">
-            <Image src={props.icon} alt={props.condition} />
+            <Image src={`/clima/${props.icon}`} width={80} height={80} alt={props.condition} />
           </span>
         </div>
 
@@ -30,7 +30,7 @@ export default function LadoIz(props) {
 
         <pre className="weather__location">
           <span className="material-symbols-outlined">location_on</span>
-          {props.location}
+          {props.city}
         </pre>
       </div>
     </section>

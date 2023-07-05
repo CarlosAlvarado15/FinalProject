@@ -3,7 +3,7 @@ import "./Otros.css";
 import Image from "next/image";
 export default function Otros({ pronostico }) {
   const today = pronostico[0];
-  console.log(today);
+
   return (
     <div className="currentWeather_hightlights">
       <h2 className="currentWeather_hightlights_title">Today`s Hightlights</h2>
@@ -19,12 +19,7 @@ export default function Otros({ pronostico }) {
 
         <div className="currentWeather__windStatus_direction">
           <span className="material-symbols-outlined">
-            <Image
-              src="public/wind-direction.svg"
-              alt="w"
-              width={"50"}
-              height={50}
-            />
+            <Image src="/wind-direction.svg" alt="w" width={20} height={20} />
           </span>
 
           {today.wind.deg}
@@ -46,7 +41,7 @@ export default function Otros({ pronostico }) {
         </div>
 
         <div className="humidity__bar">
-          <div style={{ width: `${today.humidity}%` }}></div>
+          <div style={{ width: `${today.main.humidity}%` }}></div>
         </div>
 
         <div className="humidity__porcentage">%</div>

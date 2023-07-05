@@ -7,7 +7,7 @@ export default function Cards(props) {
       <h3 className="nextDaysWeather__date">{props.date}</h3>
 
       <span className="nextDaysWeather__icon">
-        <Image src={props.icon} alt={props.condition} />
+        <Image src={`/clima/${props.icon}`} width={40} height={40} alt={'props.condition'} />
       </span>
 
       <div className="nextDaysWeather__temp_container">
