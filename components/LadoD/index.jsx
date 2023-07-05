@@ -8,14 +8,13 @@ import Footer from "../Footer";
 import Otros from "../Otros";
 
 function formatoDeFecha(date) {
-
   let hoy = new Date(date);
 
-  let diaSemana = hoy.toLocaleString('en-US', { weekday: 'short' });
+  let diaSemana = hoy.toLocaleString("en-US", { weekday: "short" });
 
   let diaMes = hoy.getDate();
 
-  let mes = hoy.toLocaleString('en-US', { month: 'short' });
+  let mes = hoy.toLocaleString("en-US", { month: "short" });
 
   return `${diaSemana}, ${diaMes} ${mes}`;
 }
@@ -48,7 +47,7 @@ const promPronostico = getData();
 
 export default function LadoD({}) {
   const pronostico = use(promPronostico);
-  console.log(formatoDeFecha(pronostico[0].dt_txt))
+  console.log(formatoDeFecha(pronostico[0].dt_txt));
   return (
     <div className="rightSide">
       <BotonesGrados />
@@ -56,10 +55,10 @@ export default function LadoD({}) {
         {pronostico.map((pron, i) => (
           <Cards
             key={i}
-            temp_min={Math.round(pron.main.temp_min) + "°C"}
-            temp_max={Math.round(pron.main.temp_max) + "°C"}
+            temp_min={Math.round(pron.main.temp_min)}
+            temp_max={Math.round(pron.main.temp_max)}
             icon={parseInt(pron.weather[0].icon) + ".png"}
-            date = {formatoDeFecha(pron.dt_txt)}
+            date={formatoDeFecha(pron.dt_txt)}
           />
         ))}
       </PronosticoT>
