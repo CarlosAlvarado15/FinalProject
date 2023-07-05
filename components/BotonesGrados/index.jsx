@@ -4,10 +4,10 @@ import "./BotonesGrados.css";
 export default function BotonesGrados(props) {
 
   const onClickButton_F = () => {
-    props.setChangeTemp("°F");
+    props.setChangeDegree(false);
   };
   const onClickButton_c = () => {
-    props.setChangeTemp("°C");
+    props.setChangeDegree(true);
   };
   return (
     <div className="convertTemperature__buttom">

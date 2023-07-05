@@ -14,6 +14,23 @@ const iconTarg = (
   </svg>
 );
 export default function Encabezado(props) {
+  function getLocation() {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  }
+  const climaLocal = () => {
+    getLocation().then((location) => {
+      const urlPron = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.coords.latitude}&lon=${location.coords.longitude}&appid=4ad565930b09016071d3b0ba0747ae13&units=metric`;
+
+      const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&appid=4ad565930b09016071d3b0ba0747ae13&units=metric`;
+
+      props.getClima(null, urlClima);
+      props.getData(null, urlPron);
+    });
+  };
+
+
   return (
     <header id="header">
       <input
@@ -21,14 +38,14 @@ export default function Encabezado(props) {
         type="button"
         value="Search for Places"
         onClick={() => {
-          props.setOpenNav(true);
+          props.setBuscadorAbierto(true);
         }}
       />
 
       <span
         className="material-symbols-outlined icon_ubicar"
         onClick={() => {
-          props.getWeatherByGeoLocation();
+          climaLocal();
         }}
       >
         {iconTarg}

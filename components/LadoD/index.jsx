@@ -18,50 +18,33 @@ function formatoDeFecha(date) {
   return `${diaSemana}, ${diaMes} ${mes}`;
 }
 
-const getData = async () => {
-  const response = await fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&units=metric&lon=10.99&appid=4ad565930b09016071d3b0ba0747ae13"
-  );
+/* const promPronostico = getData(); */
 
-  const jsonResponse = await response.json();
+export default function LadoD(props) {
+  const pronostico = props.pronostico;
 
-  const today = new Date();
-  let date;
-  const weather = [];
-
-  for (let i = 0; i < jsonResponse.list.length; i += 1) {
-    date = new Date(jsonResponse.list[i].dt_txt);
-
-    if (date.getDate() !== today.getDate()) {
-      weather.push(jsonResponse.list[i]);
-
-      i = i + 8;
-    }
-  }
-
-  return weather;
-};
-
-const promPronostico = getData();
-
-export default function LadoD({ }) {
-  const pronostico = use(promPronostico);
-  console.log(formatoDeFecha(pronostico[0].dt_txt));
   return (
     <div className="rightSide">
-      <BotonesGrados />
+      <BotonesGrados setChangeDegree={props.setChangeDegree} />
       <PronosticoT>
         {pronostico.map((pron, i) => (
           <Cards
             key={i}
-            temp_min={Math.round(pron.main.temp_min)}
-            temp_max={Math.round(pron.main.temp_max)}
+            temp_minC={Math.round(pron.main.temp_min) + "°C"}
+            temp_maxC={Math.round(pron.main.temp_max) + "°C"}
+            temp_minF={
+              Math.round(props.degreeConvertion(pron.main.temp_min)) + "°F"
+            }
+            temp_maxF={
+              Math.round(props.degreeConvertion(pron.main.temp_max)) + "°F"
+            }
             icon={parseInt(pron.weather[0].icon) + ".png"}
             date={formatoDeFecha(pron.dt_txt)}
+            changeDegree = {props.changeDegree}
           />
         ))}
       </PronosticoT>
-      <Otros pronostico={pronostico} />
+      <Otros clima={props.clima} />
       <Footer />
     </div>
   );

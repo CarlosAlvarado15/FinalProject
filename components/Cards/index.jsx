@@ -7,18 +7,21 @@ export default function Cards(props) {
       <h3 className="nextDaysWeather__date">{props.date}</h3>
 
       <span className="nextDaysWeather__icon">
-        <Image src={`/clima/${props.icon}`} width={40} height={40} alt={'props.condition'} />
+        <Image
+          src={`/clima/${props.icon}`}
+          width={40}
+          height={40}
+          alt={"props.condition"}
+        />
       </span>
 
       <div className="nextDaysWeather__temp_container">
         <p className="nextDaysWeather__temp_a">
-          {props.temp_max}
-          {props.unit}
+          {props.changeDegree ? props.temp_maxC : props.temp_maxF}
         </p>
 
         <p className="nextDaysWeather__temp_b">
-          {props.temp_min}
-          {props.unit}
+          {props.changeDegree ? props.temp_minC : props.temp_minF}
         </p>
       </div>
     </li>

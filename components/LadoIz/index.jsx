@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import "./LadoIz.css";
 import Encabezado from "../Encabezado";
+import Buscador from "../Buscador";
+
 const location = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -19,9 +21,15 @@ const location = (
 );
 
 export default function LadoIz(props) {
+  const [buscadorAbierto, setBuscadorAbierto] = React.useState(false);
+
   return (
     <section className="todayWeather__section">
-      <Encabezado />
+      <Encabezado
+        setBuscadorAbierto={setBuscadorAbierto}
+        getClima={props.getClima}
+        getData={props.getData}
+      />
       <div className="currentWeather__info_container">
         <div className="weather__icon_container">
           <span className="currentWeather_icon">
@@ -35,8 +43,9 @@ export default function LadoIz(props) {
         </div>
 
         <div className="weather__temp_container">
-          <h2 className="weather__temp">{props.temp}</h2>
-
+          <h2 className="weather__temp">
+            {props.changeDegree ? props.tempC : props.tempF}
+          </h2>
           <h3>{props.changeTemp}</h3>
         </div>
 
@@ -51,6 +60,13 @@ export default function LadoIz(props) {
           {props.city}
         </pre>
       </div>
+
+      <Buscador
+        buscadorAbierto={buscadorAbierto}
+        setBuscadorAbierto={setBuscadorAbierto}
+        getClima={props.getClima}
+        getData={props.getData}
+      />
     </section>
   );
 }
