@@ -1,4 +1,3 @@
-"use client";
 import React, { use } from "react";
 import "./LadoD.css";
 import BotonesGrados from "../BotonesGrados";
@@ -45,7 +44,7 @@ const getData = async () => {
 
 const promPronostico = getData();
 
-export default function LadoD({}) {
+export default function LadoD({ }) {
   const pronostico = use(promPronostico);
   console.log(formatoDeFecha(pronostico[0].dt_txt));
   return (

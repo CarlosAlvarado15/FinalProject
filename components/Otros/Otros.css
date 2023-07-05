@@ -26,9 +26,9 @@
 .currentWeather__windStatus,
 .currentWeather__humidity {
   width: 43%;
-  min-width: 240px;
+  min-width: 275px;
   max-width: 328px;
-  height: 190px;
+  height: 170px;
 
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
 .currentWeather__visibility,
 .currentWeather__airPressure {
   width: 43%;
-  min-width: 240px;
+  min-width: 275px;
   max-width: 328px;
   height: 190px;
   margin-bottom: 20px;
@@ -88,6 +88,10 @@
   margin: 0;
 
   color: #e7e7eb;
+}
+
+.barracrece {
+  margin: 0;
 }
 
 .currentWeather__windStatus_value h4,

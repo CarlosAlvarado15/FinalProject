@@ -1,7 +1,7 @@
+"use client";
 import LadoIz from "@/components/LadoIz";
 import LadoD from "@/components/LadoD";
 import React, { use } from "react";
-/*import { useState } from "react";*/
 
 function formatoDeFecha() {
   let hoy = new Date();
@@ -15,7 +15,7 @@ function formatoDeFecha() {
   return `${diaSemana}, ${diaMes} ${mes}`;
 }
 
-const getClima = async () => {
+const getClima = async (temForm) => {
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=4ad565930b09016071d3b0ba0747ae13&units=metric`
   );
@@ -28,9 +28,9 @@ const getClima = async () => {
 const promClima = getClima();
 
 export default function Home() {
-  /*const [temForm, seTemForm] = useState("metric");
-  const centigrados = () => seTemForm("metric");
-  const farengein = () => seTemForm("imperial");*/
+  /* const [temForm, seTemForm] = useState("metric"); */
+  /*   const centigrados = () => seTemForm("metric");
+  const farengein = () => seTemForm("imperial"); */
   const clima = use(promClima);
   const fecha = formatoDeFecha();
 
@@ -38,7 +38,7 @@ export default function Home() {
     <div className="container">
       <LadoIz
         icon={parseInt(clima.weather[0].icon) + ".png"}
-        temp={Math.round(clima.main.temp) }
+        temp={Math.round(clima.main.temp) + "C"}
         city={clima.name}
         condition={clima.weather[0].description}
         date={fecha}

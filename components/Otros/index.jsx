@@ -35,9 +35,9 @@ export default function Otros({ pronostico }) {
         </div>
 
         <div className="humidity__number_porcentage">
-          <p>0</p>
-          <p>50</p>
-          <p>100</p>
+          <p className="barracrece">0</p>
+          <p className="barracrece">50</p>
+          <p className="barracrece">100</p>
         </div>
 
         <div className="humidity__bar">
